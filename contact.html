@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact — David Kretz</title>
+<meta name="description" content="Contact details and academic profiles for David Kretz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>/* David Kretz — personal academic site
+   Direction: "the index" — bibliographic, typographic, restrained.
+   One stylesheet, all pages. Edit colours/type here once. */
+
+:root {
+  --ink:        #1c1b19;   /* near-black, warmer than pure #000 */
+  --ink-soft:   #4a4843;
+  --ink-faint:  #8a8780;
+  --rule:       #d9d6cd;   /* hairline rules */
+  --rule-soft:  #e9e7df;
+  --paper:      #fbfaf6;   /* very faint warm white, not cream */
+  --accent:     #5a4a36;   /* muted bistre, used sparingly for links */
+  --accent-ul:  #c9c2b2;   /* link underline */
+  --maxw:       46rem;     /* reading measure */
+  --serif:      "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --sans:       "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:       "iA Writer Mono", "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+}
+
+/* ---- Masthead (shared across pages) ---- */
+.masthead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 0.7rem;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.masthead .name {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+.masthead .name a { color: var(--ink); text-decoration: none; }
+.masthead .affil {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.03em;
+}
+
+/* ---- Index (homepage) ---- */
+.index { margin: 0 0 2.5rem; }
+.index a {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  grid-template-areas: "num title" ".  gloss";
+  align-items: baseline;
+  gap: 0.1rem 1rem;
+  padding: 1rem 0;
+  border-bottom: 0.5px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: padding-left 0.15s ease;
+}
+.index a:hover, .index a:focus-visible {
+  padding-left: 0.5rem;
+  background: linear-gradient(to right, var(--rule-soft), transparent 60%);
+  outline: none;
+}
+.index .num {
+  grid-area: num;
+  font-family: var(--sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+.index .title { grid-area: title; font-size: 1.15rem; }
+.index .gloss { grid-area: gloss; font-size: 0.9rem; color: var(--ink-soft); }
+
+@media (min-width: 34rem) {
+  .index a {
+    grid-template-columns: 2rem 1fr auto;
+    grid-template-areas: "num title gloss";
+    align-items: baseline;
+  }
+  .index .gloss { text-align: right; }
+}
+
+.lede {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0 0 2.5rem;
+  max-width: 38ch;
+}
+
+/* ---- Interior pages ---- */
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 0 0 0.5rem;
+}
+h1.page {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin: 0 0 2rem;
+}
+h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.75rem;
+}
+p { max-width: var(--maxw); }
+a.link { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-ul); }
+a.link:hover { border-bottom-color: var(--accent); }
+
+.wrap ul:not(.pubs):not(.talks):not(.courses):not(.index):not(.contact-list):not(.viewtoggle) {
+  max-width: var(--maxw);
+  padding-left: 1.1rem;
+  margin: 0.5rem 0 1rem;
+}
+.wrap ul:not(.pubs):not(.talks):not(.courses):not(.index):not(.contact-list):not(.viewtoggle) li {
+  margin: 0.2rem 0;
+  padding-left: 0.2rem;
+}
+
+em { font-style: italic; }
+
+/* Publications list */
+.pubs { list-style: none; padding: 0; margin: 0; }
+.pubs li {
+  padding: 1rem 0 1rem 2.8rem;
+  position: relative;
+  border-bottom: 0.5px solid var(--rule);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.pubs .opus {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-faint);
+}
+.pubs .opus::before { content: "№ "; font-weight: 400; }
+.pubs .venue { font-style: italic; }
+.pubs .publink { display: inline-block; margin-left: 0.35rem; font-size: 0.82rem; white-space: nowrap; }
+
+/* View toggle */
+.viewtoggle {
+  display: inline-flex;
+  border: 0.5px solid var(--rule);
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem 0 0.5rem;
+}
+.viewtoggle button {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 0;
+  padding: 0.35rem 0.8rem;
+  cursor: pointer;
+}
+.viewtoggle button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper);
+}
+.opusnote { font-size: 0.82rem; color: var(--ink-faint); margin: 0.25rem 0 0; }
+.chrono-only { display: none; }
+.pubs .authors { color: var(--ink); }
+.pubs em.title { font-style: normal; }
+.todo {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: #8a5a2a;
+  background: #f4ecdd;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+}
+
+/* Talks / events list */
+.talks { list-style: none; padding: 0; margin: 0.5rem 0 0; }
+.talks li {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr;
+  gap: 0.25rem 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+.talks .date { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.15rem; }
+.talks .what { font-size: 0.96rem; }
+.talks .where { display: block; font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.15rem; }
+.note { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.5rem; }
+
+/* Course entries (teaching) */
+.courses { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.courses li {
+  padding: 1.1rem 0;
+  border-bottom: 0.5px solid var(--rule);
+}
+.courses .head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.courses .ctitle { font-size: 1.02rem; }
+.courses .role {
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 0.5px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+  white-space: nowrap;
+}
+.courses .meta { font-size: 0.85rem; color: var(--ink-soft); margin: 0.2rem 0 0; }
+.courses .desc { font-size: 0.92rem; color: var(--ink-soft); margin: 0.4rem 0 0; max-width: 52ch; }
+.courses .syllabus { font-size: 0.82rem; margin-top: 0.35rem; display: inline-block; }
+
+.group-label {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink);
+  margin: 2.5rem 0 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ink);
+}
+.group-label:first-of-type { margin-top: 1.5rem; }
+
+/* Back link */
+.back {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+.back:hover { color: var(--ink); }
+
+/* Contact */
+.contact-list { list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.contact-list li {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 0.5px solid var(--rule);
+  font-size: 0.95rem;
+}
+.contact-list .k { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); letter-spacing: 0.04em; padding-top: 0.15rem; }
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.25rem;
+  border-top: 0.5px solid var(--rule);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+footer a { color: var(--ink-faint); text-decoration: none; }
+footer a:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <span class="name"><a href="index.html">David Kretz</a></span>
+    <span class="affil">Yale University · Humanities</span>
+  </header>
+
+  <a class="back" href="index.html">← Index</a>
+
+  <p class="eyebrow">07 — Contact</p>
+  <h1 class="page">Contact</h1>
+
+  <p>I welcome correspondence about my research, potential collaborations, and invitations to speak.</p>
+
+  <ul class="contact-list">
+    <li><span class="k">Email</span><span><a class="link" id="email" href="#">loading…</a></span></li>
+    <li><span class="k">Academia</span><span><a class="link" href="https://yale.academia.edu/DavidKretz">yale.academia.edu/DavidKretz ↗</a></span></li>
+    <li><span class="k">Notebook</span><span><a class="link" href="https://davidkretz.wordpress.com/">davidkretz.wordpress.com ↗</a></span></li>
+    <li><span class="k">ORCID</span><span>[add your ORCID iD]<span class="todo">optional</span></span></li>
+  </ul>
+
+  <footer>
+    <span><a href="index.html">David Kretz</a></span>
+    <span>New Haven, CT</span>
+  </footer>
+
+</div>
+<script>
+  (function () {
+    var user = "david.kretz";
+    var domain = "yale.edu";
+    var a = document.getElementById("email");
+    if (a) { a.href = "mailto:" + user + "@" + domain; a.textContent = user + "@" + domain; }
+  })();
+</script>
+</body>
+</html>
