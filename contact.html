@@ -118,7 +118,7 @@ body {
   line-height: 1.55;
   color: var(--ink-soft);
   margin: 0 0 2.5rem;
-  max-width: 38ch;
+  max-width: none;
 }
 
 /* ---- Interior pages ---- */
@@ -143,7 +143,9 @@ h2 {
   font-size: 1.35rem;
   margin: 2.5rem 0 0.75rem;
 }
-p { max-width: var(--maxw); }
+p { max-width: var(--maxw); font-family: var(--serif); }
+/* Prose lists (e.g. Languages) in serif to match body */
+.wrap ul:not(.pubs):not(.talks):not(.courses):not(.index):not(.contact-list):not(.viewtoggle) li { font-family: var(--serif); }
 a.link { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-ul); }
 a.link:hover { border-bottom-color: var(--accent); }
 
@@ -202,7 +204,7 @@ em { font-style: italic; }
   background: var(--ink);
   color: var(--paper);
 }
-.opusnote { font-size: 0.82rem; color: var(--ink-faint); margin: 0.25rem 0 0; }
+.opusnote { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-faint); margin: 0.25rem 0 0; }
 .chrono-only { display: none; }
 .pubs .authors { color: var(--ink); }
 .pubs em.title { font-style: normal; }
@@ -230,7 +232,7 @@ em { font-style: italic; }
 .talks .date { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); padding-top: 0.15rem; }
 .talks .what { font-size: 0.96rem; }
 .talks .where { display: block; font-size: 0.85rem; color: var(--ink-soft); margin-top: 0.15rem; }
-.note { font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.5rem; }
+.note { font-family: var(--sans); font-size: 0.88rem; color: var(--ink-soft); margin-top: 0.5rem; }
 
 /* Course entries (teaching) */
 .courses { list-style: none; padding: 0; margin: 1.5rem 0 0; }
@@ -255,7 +257,7 @@ em { font-style: italic; }
   padding: 0.05rem 0.4rem;
   white-space: nowrap;
 }
-.courses .meta { font-size: 0.85rem; color: var(--ink-soft); margin: 0.2rem 0 0; }
+.courses .meta { font-family: var(--sans); font-size: 0.85rem; color: var(--ink-soft); margin: 0.2rem 0 0; }
 .courses .desc { font-size: 0.92rem; color: var(--ink-soft); margin: 0.4rem 0 0; max-width: 52ch; }
 .courses .syllabus { font-size: 0.82rem; margin-top: 0.35rem; display: inline-block; }
 
