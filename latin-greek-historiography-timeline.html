@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ancient historiography timeline, 200 BCE – 510 CE</title>
+<style>
+  :root{
+    --bg: #ffffff;
+    --surface: #faf9f7;
+    --surface-2: #f1efe8;
+    --text-1: #1f1e1c;
+    --text-2: #5f5e5a;
+    --text-3: #8a8983;
+    --border-1: rgba(31,30,28,0.40);
+    --border-2: rgba(31,30,28,0.18);
+    --border-3: rgba(31,30,28,0.10);
+    --info-bg: #e6f1fb;
+    --info-text: #0c447c;
+    --info-border: rgba(23,95,165,0.4);
+    --lat: #85B7EB;
+    --grk: #9FB8CC;
+    --teal: #5DCAA5;
+    --coral: #D85A30;
+    --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #1a1916;
+      --surface: #232220;
+      --surface-2: #2c2c2a;
+      --text-1: #f1efe8;
+      --text-2: #b4b2a9;
+      --text-3: #888780;
+      --border-1: rgba(241,239,232,0.40);
+      --border-2: rgba(241,239,232,0.20);
+      --border-3: rgba(241,239,232,0.12);
+      --info-bg: #0c447c;
+      --info-text: #e6f1fb;
+      --info-border: rgba(133,183,235,0.5);
+      --lat: #378ADD;
+      --grk: #6E879C;
+    }
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0; background:var(--bg); color:var(--text-1);
+    font-family:var(--font); font-size:15px; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{ max-width:1000px; margin:0 auto; padding:1.5rem 1.25rem 3rem; }
+  h1{ font-size:21px; font-weight:500; margin:0 0 4px; letter-spacing:-0.01em; }
+  .sub{ font-size:13px; color:var(--text-2); margin:0 0 1.4rem; }
+  .legend-row{ display:flex; gap:12px; flex-wrap:wrap; font-size:11.5px; color:var(--text-2); margin-bottom:7px; align-items:center; }
+  .legend-row .it{ display:inline-flex; align-items:center; gap:5px; }
+  .controls{ display:flex; flex-direction:column; gap:6px; margin:1rem 0 0.6rem; }
+  .ctl-row{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; }
+  .ctl-label{ font-size:10px; color:var(--text-3); width:54px; flex-shrink:0; text-transform:uppercase; letter-spacing:0.04em; }
+  button.f{
+    font-size:11.5px; padding:4px 11px; border-radius:7px; cursor:pointer;
+    background:var(--surface-2); color:var(--text-2); border:0.5px solid var(--border-3);
+    font-family:var(--font); transition:background .12s,color .12s;
+  }
+  button.f:hover{ border-color:var(--border-2); }
+  button.f.on{ background:var(--info-bg); color:var(--info-text); border:0.5px solid var(--info-border); }
+  .evpanel{ border:0.5px solid var(--border-3); border-radius:8px; padding:10px 12px; margin:0.7rem 0 1rem; }
+  .evhead{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .evhead span{ font-size:10px; color:var(--text-3); text-transform:uppercase; letter-spacing:0.04em; }
+  .evhead button{ font-size:10px; padding:3px 9px; border-radius:6px; cursor:pointer; background:var(--surface-2); border:0.5px solid var(--border-3); color:var(--text-2); font-family:var(--font); }
+  #evbox{ display:flex; flex-direction:column; gap:7px; }
+  .evgroup{ display:flex; gap:8px 14px; flex-wrap:wrap; align-items:center; }
+  .evgroup > .gl{ font-size:10px; font-weight:500; min-width:124px; display:inline-flex; align-items:center; gap:5px; }
+  .evgroup label{ display:inline-flex; align-items:center; gap:5px; font-size:11px; cursor:pointer; color:var(--text-2); }
+  .evgroup label input{ width:13px; height:13px; cursor:pointer; }
+  #chartwrap{ width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .note{ font-size:11.5px; color:var(--text-3); margin-top:12px; line-height:1.65; }
+  svg text{ font-family:var(--font); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Historians of Rome, 200 BCE – 510 CE</h1>
+  <p class="sub">Latin- and Greek-writing historians: lifespans, dates of composition, periods covered, form, religious identity, and how completely each work survives. An interactive instrument — filter and toggle to explore.</p>
+
+  <div class="legend-row">
+    <span class="it"><svg width="12" height="12"><circle cx="6" cy="6" r="4.5" fill="currentColor"/></svg>Annalistic</span>
+    <span class="it"><svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" rx="1.5" fill="currentColor"/></svg>Breviary</span>
+    <span class="it"><svg width="12" height="12"><polygon points="6,1 11,11 1,11" fill="currentColor"/></svg>Biography</span>
+    <span class="it"><svg width="12" height="12"><polygon points="6,1 11,6 6,11 1,6" fill="currentColor"/></svg>Ecclesiastical</span>
+    <span class="it"><svg width="12" height="12"><polygon points="6,0.5 7.5,4.5 11.5,4.8 8.3,7.4 9.3,11.5 6,9 2.7,11.5 3.7,7.4 0.5,4.8 4.5,4.5" fill="currentColor"/></svg>Theology of history</span>
+  </div>
+  <div class="legend-row">
+    <span class="it"><svg width="13" height="13"><circle cx="6.5" cy="6.5" r="5" fill="#0F6E56"/></svg>Intact</span>
+    <span class="it"><svg width="13" height="13"><circle cx="6.5" cy="6.5" r="5" fill="#0F6E56" fill-opacity="0.4" stroke="#0F6E56" stroke-width="1.2"/></svg>Mutilated</span>
+    <span class="it"><svg width="13" height="13"><circle cx="6.5" cy="6.5" r="5" fill="none" stroke="#0F6E56" stroke-width="1.3" stroke-dasharray="2 1.5"/></svg>Lost / fragmentary</span>
+    <span class="it"><span style="color:var(--coral);font-weight:600">✝</span>date uncertain by decades+</span>
+  </div>
+  <div class="legend-row">
+    <span>Author colour = religion (<span style="color:#0F6E56">green pagan</span> · <span style="color:#378ADD">blue Christian</span> · <span style="color:#BA7517">amber Jewish</span>). Lifespan line: solid = Latin, dashed = Greek.</span>
+  </div>
+
+  <div class="controls">
+    <div class="ctl-row"><span class="ctl-label">Mode</span>
+      <button class="f" data-g="mode" data-v="life">Composition</button>
+      <button class="f" data-g="mode" data-v="cover">Periods covered</button>
+    </div>
+    <div class="ctl-row"><span class="ctl-label">Form</span>
+      <button class="f" data-g="form" data-v="all">All</button>
+      <button class="f" data-g="form" data-v="ann">Annalistic</button>
+      <button class="f" data-g="form" data-v="epi">Breviary</button>
+      <button class="f" data-g="form" data-v="ecc">Ecclesiastical</button>
+      <button class="f" data-g="form" data-v="bio">Biography</button>
+    </div>
+    <div class="ctl-row"><span class="ctl-label">Religion</span>
+      <button class="f" data-g="rel" data-v="all">All</button>
+      <button class="f" data-g="rel" data-v="pagan">Pagan</button>
+      <button class="f" data-g="rel" data-v="christ">Christian</button>
+      <button class="f" data-g="rel" data-v="jew">Jewish</button>
+    </div>
+    <div class="ctl-row"><span class="ctl-label">Survival</span>
+      <button class="f" data-g="surv" data-v="all">All</button>
+      <button class="f" data-g="surv" data-v="intact">Intact</button>
+      <button class="f" data-g="surv" data-v="mut">Mutilated</button>
+      <button class="f" data-g="surv" data-v="lost">Lost</button>
+    </div>
+  </div>
+
+  <div class="evpanel">
+    <div class="evhead">
+      <span>Threshold events — tick to show</span>
+      <span style="display:flex;gap:6px">
+        <button id="ev-all">All</button>
+        <button id="ev-none">None</button>
+      </span>
+    </div>
+    <div id="evbox"></div>
+  </div>
+
+  <div id="chartwrap"></div>
+  <p class="note" id="note"></p>
+</div>
+
+<script>
+const raw = [
+  {n:"Cato the Elder", lang:"lat", rel:"pagan", form:"ann", surv:"lost", unc:false, b:-234, d:-149, works:[{cs:-753, ce:-149, y:-160}]},
+  {n:"Polybius", lang:"grk", rel:"pagan", form:"ann", surv:"mut", unc:false, b:-200, d:-118, works:[{cs:-264, ce:-146, y:-140}]},
+  {n:"Nepos", lang:"lat", rel:"pagan", form:"bio", surv:"mut", unc:false, b:-110, d:-25, works:[{cs:-500, ce:-40, y:-35}]},
+  {n:"Caesar", lang:"lat", rel:"pagan", form:"ann", surv:"intact", unc:false, b:-100, d:-44, works:[{cs:-58, ce:-50, y:-51},{cs:-49, ce:-48, y:-46}]},
+  {n:"Diodorus", lang:"grk", rel:"pagan", form:"ann", surv:"mut", unc:false, b:-90, d:-30, works:[{cs:-2300, ce:-60, y:-36}]},
+  {n:"Sallust", lang:"lat", rel:"pagan", form:"ann", surv:"intact", unc:false, b:-86, d:-35, works:[{cs:-63, ce:-62, y:-42},{cs:-112, ce:-105, y:-41}]},
+  {n:"Dion. Hal.", lang:"grk", rel:"pagan", form:"ann", surv:"mut", unc:false, b:-60, d:-7, works:[{cs:-753, ce:-264, y:-7}]},
+  {n:"Livy", lang:"lat", rel:"pagan", form:"ann", surv:"mut", unc:false, b:-59, d:17, works:[{cs:-753, ce:-9, y:-20}]},
+  {n:"Valerius Max.", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:false, b:-20, d:50, works:[{cs:-753, ce:30, y:31}]},
+  {n:"Velleius", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:false, b:-19, d:31, works:[{cs:-753, ce:30, y:30}]},
+  {n:"Curtius Rufus", lang:"lat", rel:"pagan", form:"ann", surv:"mut", unc:true, b:1, d:60, works:[{cs:-336, ce:-323, y:45}]},
+  {n:"Josephus", lang:"grk", rel:"jew", form:"ann", surv:"intact", unc:false, b:37, d:100, works:[{cs:-167, ce:73, y:78},{cs:-2300, ce:66, y:94}]},
+  {n:"Plutarch", lang:"grk", rel:"pagan", form:"bio", surv:"intact", unc:false, b:46, d:120, works:[{cs:-700, ce:-30, y:120}]},
+  {n:"Tacitus", lang:"lat", rel:"pagan", form:"ann", surv:"mut", unc:false, b:56, d:120, works:[{cs:40, ce:93, y:98},{cs:69, ce:96, y:107},{cs:14, ce:68, y:117}]},
+  {n:"Suetonius", lang:"lat", rel:"pagan", form:"bio", surv:"intact", unc:false, b:69, d:130, works:[{cs:-49, ce:96, y:121}]},
+  {n:"Florus", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:true, b:74, d:145, works:[{cs:-753, ce:-29, y:130}]},
+  {n:"Arrian", lang:"grk", rel:"pagan", form:"ann", surv:"intact", unc:false, b:86, d:160, works:[{cs:-336, ce:-323, y:140}]},
+  {n:"Appian", lang:"grk", rel:"pagan", form:"ann", surv:"mut", unc:false, b:95, d:165, works:[{cs:-753, ce:-35, y:150}]},
+  {n:"Justin", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:true, b:130, d:200, works:[{cs:-2300, ce:-9, y:200}]},
+  {n:"Cassius Dio", lang:"grk", rel:"pagan", form:"ann", surv:"mut", unc:false, b:163, d:235, works:[{cs:-753, ce:229, y:225}]},
+  {n:"Herodian", lang:"grk", rel:"pagan", form:"ann", surv:"intact", unc:true, b:170, d:240, works:[{cs:180, ce:238, y:245}]},
+  {n:"Dexippus", lang:"grk", rel:"pagan", form:"ann", surv:"lost", unc:true, b:210, d:273, works:[{cs:238, ce:270, y:270}]},
+  {n:"Lactantius", lang:"lat", rel:"christ", form:"ecc", surv:"intact", unc:false, b:250, d:325, works:[{cs:303, ce:313, y:315}]},
+  {n:"Eusebius", lang:"grk", rel:"christ", form:"ecc", surv:"intact", unc:false, b:260, d:339, works:[{cs:-2016, ce:325, y:311},{cs:30, ce:324, y:325}]},
+  {n:"Aurelius Victor", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:false, b:320, d:390, works:[{cs:-31, ce:360, y:361}]},
+  {n:"Festus", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:false, b:320, d:380, works:[{cs:-753, ce:369, y:370}]},
+  {n:"Eutropius", lang:"lat", rel:"pagan", form:"epi", surv:"intact", unc:false, b:320, d:390, works:[{cs:-753, ce:364, y:369}]},
+  {n:"Eunapius", lang:"grk", rel:"pagan", form:"ann", surv:"lost", unc:true, b:347, d:420, works:[{cs:270, ce:404, y:400}]},
+  {n:"Ammianus", lang:"lat", rel:"pagan", form:"ann", surv:"mut", unc:false, b:330, d:395, works:[{cs:96, ce:378, y:390}]},
+  {n:"Jerome", lang:"lat", rel:"christ", form:"ecc", surv:"intact", unc:false, b:347, d:420, works:[{cs:-2016, ce:378, y:380}]},
+  {n:"Rufinus", lang:"lat", rel:"christ", form:"ecc", surv:"intact", unc:false, b:345, d:411, works:[{cs:30, ce:395, y:402}]},
+  {n:"Augustine", lang:"lat", rel:"christ", form:"theo", surv:"intact", unc:false, b:354, d:430, works:[{cs:-753, ce:410, y:426}]},
+  {n:"Orosius", lang:"lat", rel:"christ", form:"ecc", surv:"intact", unc:false, b:375, d:420, works:[{cs:-2300, ce:417, y:417}]},
+  {n:"Olympiodorus", lang:"grk", rel:"pagan", form:"ann", surv:"lost", unc:true, b:380, d:430, works:[{cs:407, ce:425, y:427}]},
+  {n:"Socrates Schol.", lang:"grk", rel:"christ", form:"ecc", surv:"intact", unc:false, b:380, d:440, works:[{cs:305, ce:439, y:439}]},
+  {n:"Zosimus", lang:"grk", rel:"pagan", form:"ann", surv:"intact", unc:true, b:450, d:510, works:[{cs:-31, ce:410, y:500}]},
+];
+const data = raw.slice().sort((a,b)=>a.b-b.b);
+
+const catColor={rep:"#A32D2D",crisis:"#D85A30",dyn:"#534AB7",war:"#854F0B",plague:"#3B6D11",rel:"#185FA5"};
+const catLabel={rep:"Republic → Empire",crisis:"Third-century crisis",dyn:"Dynastic transitions",war:"Wars & revolts",plague:"Plagues",rel:"Religious-institutional"};
+const catOrder=["rep","crisis","dyn","war","plague","rel"];
+const allEvents=[
+  {id:"rep",cat:"rep",label:"Fall of the Republic",short:"49–27 BCE",band:true,b0:-49,b1:-27,peak:-31,def:true},
+  {id:"crisis",cat:"crisis",label:"3rd-c. crisis / transformation",short:"235–284",band:true,b0:235,b1:284,peak:260,def:true},
+  {id:"d_jc",cat:"dyn",label:"Julio-Claudians founded",short:"27 BCE",band:false,y:-27,def:false},
+  {id:"d_flav",cat:"dyn",label:"Flavians",short:"69",band:false,y:69,def:true},
+  {id:"d_nerva",cat:"dyn",label:"Nerva-Antonines",short:"96",band:false,y:96,def:false},
+  {id:"d_sev",cat:"dyn",label:"Severans",short:"193",band:false,y:193,def:true},
+  {id:"d_tetr",cat:"dyn",label:"Tetrarchy",short:"284",band:false,y:284,def:false},
+  {id:"d_const",cat:"dyn",label:"Constantinian",short:"306",band:false,y:306,def:false},
+  {id:"d_val",cat:"dyn",label:"Valentinianic",short:"364",band:false,y:364,def:false},
+  {id:"d_theo",cat:"dyn",label:"Theodosian",short:"379",band:false,y:379,def:false},
+  {id:"w_jw",cat:"war",label:"Jewish War / Temple",short:"66–70",band:false,y:70,def:false},
+  {id:"w_bk",cat:"war",label:"Bar Kokhba revolt",short:"132–135",band:false,y:134,def:false},
+  {id:"w_adr",cat:"war",label:"Battle of Adrianople",short:"378",band:false,y:378,def:false},
+  {id:"w_sack",cat:"war",label:"Sack of Rome",short:"410",band:false,y:410,def:true},
+  {id:"p_ant",cat:"plague",label:"Antonine Plague",short:"c.165–180",band:false,y:172,def:false},
+  {id:"p_cyp",cat:"plague",label:"Plague of Cyprian",short:"c.249–262",band:false,y:255,def:false},
+  {id:"r_persec",cat:"rel",label:"Great Persecution",short:"303",band:false,y:303,def:false},
+  {id:"r_milan",cat:"rel",label:"Edict of Milan",short:"313",band:false,y:313,def:true},
+  {id:"r_nicaea",cat:"rel",label:"Council of Nicaea",short:"325",band:false,y:325,def:false},
+  {id:"r_thess",cat:"rel",label:"Edict of Thessalonica",short:"380",band:false,y:380,def:true},
+];
+const evState={}; allEvents.forEach(e=>evState[e.id]=e.def);
+
+let MODE='life',FORM='all',REL='all',SURV='all';
+const relFill={pagan:"#0F6E56",christ:"#185FA5",jew:"#854F0B"};
+function relColor(r){
+  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+    return {pagan:"#1D9E75",christ:"#378ADD",jew:"#BA7517"}[r];
+  }
+  return relFill[r];
+}
+const X0=-240,X1=520,axisH=48,rowH=18,padL=150,padR=24,plotW=786,topPad=8;
+const fullW=padL+plotW+padR;
+function xpos(y){let yc=Math.max(X0,Math.min(X1,y));return padL+(yc-X0)/(X1-X0)*plotW;}
+function rowY(i){return topPad+axisH+i*rowH+rowH/2;}
+function tickLabel(t){if(t===0)return"1 CE";if(t<0)return(-t)+(t===-200?" BCE":"");return t+(t===500?" CE":"");}
+
+function shapePath(form,cx,cy,s){
+  if(form==='ann')return{tag:'circle',attr:`cx="${cx}" cy="${cy}" r="${s}"`};
+  if(form==='epi')return{tag:'rect',attr:`x="${cx-s}" y="${cy-s}" width="${s*2}" height="${s*2}" rx="1"`};
+  if(form==='bio')return{tag:'polygon',attr:`points="${cx},${cy-s-0.5} ${cx+s+0.5},${cy+s} ${cx-s-0.5},${cy+s}"`};
+  if(form==='theo'){let pts=[];for(let k=0;k<5;k++){const a=-Math.PI/2+k*2*Math.PI/5;const a2=a+Math.PI/5;pts.push(`${(cx+Math.cos(a)*(s+1)).toFixed(1)},${(cy+Math.sin(a)*(s+1)).toFixed(1)}`);pts.push(`${(cx+Math.cos(a2)*(s*0.45)).toFixed(1)},${(cy+Math.sin(a2)*(s*0.45)).toFixed(1)}`);}return{tag:'polygon',attr:`points="${pts.join(' ')}"`};}
+  return{tag:'polygon',attr:`points="${cx},${cy-s-1} ${cx+s+1},${cy} ${cx},${cy+s+1} ${cx-s-1},${cy}"`};
+}
+function marker(form,cx,cy,fill,surv){
+  const s=3.7,sp=shapePath(form,cx,cy,s);
+  if(surv==='lost')return`<${sp.tag} ${sp.attr} fill="none" stroke="${fill}" stroke-width="1.3" stroke-dasharray="2 1.5"/>`;
+  if(surv==='mut')return`<${sp.tag} ${sp.attr} fill="${fill}" fill-opacity="0.4" stroke="${fill}" stroke-width="1.1"/>`;
+  return`<${sp.tag} ${sp.attr} fill="${fill}"/>`;
+}
+function dim(p){return (FORM!=='all'&&p.form!==FORM)||(REL!=='all'&&p.rel!==REL)||(SURV!=='all'&&p.surv!==SURV);}
+
+function render(){
+  const cssText = getComputedStyle(document.documentElement);
+  const cBorderP = cssText.getPropertyValue('--border-1').trim();
+  const cBorderT = cssText.getPropertyValue('--border-3').trim();
+  const cText2 = cssText.getPropertyValue('--text-2').trim();
+  const cText3 = cssText.getPropertyValue('--text-3').trim();
+  const cLat = cssText.getPropertyValue('--lat').trim();
+  const cGrk = cssText.getPropertyValue('--grk').trim();
+
+  const H=topPad+axisH+data.length*rowH+22;
+  let svg=`<svg width="${fullW}" viewBox="0 0 ${fullW} ${H}" role="img" aria-label="Timeline of ancient historians from 200 BCE to 510 CE" style="min-width:${fullW}px">`;
+
+  allEvents.filter(e=>e.band&&evState[e.id]).forEach(e=>{
+    const c=catColor[e.cat],bx0=xpos(e.b0),bx1=xpos(e.b1);
+    svg+=`<rect x="${bx0}" y="${topPad+axisH-4}" width="${bx1-bx0}" height="${H-axisH-topPad-14}" fill="${c}" opacity="0.10"/>`;
+    [e.b0,e.b1].forEach(bb=>{svg+=`<line x1="${xpos(bb)}" y1="${topPad+axisH-4}" x2="${xpos(bb)}" y2="${H-18}" stroke="${c}" stroke-width="0.8" opacity="0.4"/>`;});
+    svg+=`<line x1="${xpos(e.peak)}" y1="${topPad+axisH-4}" x2="${xpos(e.peak)}" y2="${H-18}" stroke="${c}" stroke-width="0.9" stroke-dasharray="2 2" opacity="0.4"/>`;
+  });
+  for(let t=-200;t<=500;t+=25){
+    const x=xpos(t),isC=(t%100===0),isF=(t%50===0);
+    svg+=`<line x1="${x}" y1="${topPad+axisH-4}" x2="${x}" y2="${H-18}" stroke="${isC?cBorderP:cBorderT}" stroke-width="${isC?1:0.5}" opacity="${isC?0.55:(isF?0.4:0.22)}"/>`;
+    if(isF)svg+=`<text x="${x}" y="${H-5}" text-anchor="middle" style="font-size:${isC?10.5:9.5}px;font-weight:${isC?500:400};fill:${isC?cText2:cText3}">${tickLabel(t)}</text>`;
+  }
+  const pts=allEvents.filter(e=>!e.band&&evState[e.id]).sort((a,b)=>a.y-b.y);
+  pts.forEach((e,k)=>{
+    const x=xpos(e.y),c=catColor[e.cat];
+    svg+=`<line x1="${x}" y1="${topPad+axisH-4}" x2="${x}" y2="${H-18}" stroke="${c}" stroke-width="1" opacity="0.5"/>`;
+    svg+=`<text x="${x+3}" y="${topPad+9+(k%4)*9.5}" style="font-size:8px;fill:${c};font-weight:500">${e.short}</text>`;
+  });
+  allEvents.filter(e=>e.band&&evState[e.id]).forEach(e=>{
+    svg+=`<text x="${xpos(e.peak)}" y="${topPad+9}" text-anchor="middle" style="font-size:8px;fill:${catColor[e.cat]};font-weight:600">${e.short}</text>`;
+  });
+
+  data.forEach((p,i)=>{
+    const y=rowY(i),op=dim(p)?0.13:1,nf=relColor(p.rel);
+    svg+=`<g opacity="${op}">`;
+    const cross = p.unc ? `<tspan dx="3" style="fill:${cssText.getPropertyValue('--coral').trim()};font-weight:600">✝</tspan>` : '';
+    svg+=`<text x="${padL-22}" y="${y+4}" text-anchor="end" style="font-size:10px;font-weight:500;fill:${nf}">${p.n}${cross}</text>`;
+    svg+=`<g transform="translate(${padL-14},${y})">${marker(p.form,0,0,nf,p.surv)}</g>`;
+    const lx0=xpos(p.b),lx1=xpos(p.d);
+    svg+=`<line x1="${lx0}" y1="${y}" x2="${lx1}" y2="${y}" stroke="${p.lang==='lat'?cLat:cGrk}" stroke-width="${p.lang==='lat'?2.5:1.2}" stroke-dasharray="${p.lang==='lat'?'':'3 2'}" opacity="0.5" stroke-linecap="round"/>`;
+    if(MODE==='cover'){
+      p.works.forEach(w=>{
+        const o=p.surv==='lost'?0.3:p.surv==='mut'?0.5:0.68;
+        svg+=`<rect x="${xpos(w.cs)}" y="${y+1.5}" width="${Math.max(3,xpos(w.ce)-xpos(w.cs))}" height="4" rx="2" fill="#5DCAA5" opacity="${o}"/>`;
+        if(w.cs<X0)svg+=`<polygon points="${padL-3},${y+3.5} ${padL+3},${y+1} ${padL+3},${y+6}" fill="#1D9E75"/>`;
+      });
+    } else {
+      p.works.forEach(w=>{ svg+=`<g transform="translate(${xpos(w.y)},${y})">${marker(p.form,0,0,nf,p.surv)}</g>`; });
+    }
+    svg+=`</g>`;
+  });
+  svg+=`</svg>`;
+  document.getElementById('chartwrap').innerHTML=svg;
+}
+
+function buildEvBox(){
+  document.getElementById('evbox').innerHTML=catOrder.map(cat=>{
+    const evs=allEvents.filter(e=>e.cat===cat),c=catColor[cat];
+    const chips=evs.map(e=>`<label><input type="checkbox" data-ev="${e.id}" ${evState[e.id]?'checked':''} style="accent-color:${c}"/>${e.label} <span style="color:var(--text-3)">(${e.short})</span></label>`).join('');
+    return`<div class="evgroup"><span class="gl" style="color:${c}"><span>●</span>${catLabel[cat]}</span>${chips}</div>`;
+  }).join('');
+  document.querySelectorAll('#evbox input[data-ev]').forEach(cb=>{
+    cb.addEventListener('change',()=>{ evState[cb.dataset.ev]=cb.checked; render(); });
+  });
+}
+
+function syncButtons(){
+  document.querySelectorAll('button.f').forEach(btn=>{
+    const g=btn.dataset.g, v=btn.dataset.v;
+    const cur={mode:MODE,form:FORM,rel:REL,surv:SURV}[g];
+    btn.classList.toggle('on', cur===v);
+  });
+}
+document.querySelectorAll('button.f').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const g=btn.dataset.g, v=btn.dataset.v;
+    if(g==='mode')MODE=v; else if(g==='form')FORM=v; else if(g==='rel')REL=v; else if(g==='surv')SURV=v;
+    syncButtons(); render();
+  });
+});
+document.getElementById('ev-all').addEventListener('click',()=>{ allEvents.forEach(e=>evState[e.id]=true); buildEvBox(); render(); });
+document.getElementById('ev-none').addEventListener('click',()=>{ allEvents.forEach(e=>evState[e.id]=false); buildEvBox(); render(); });
+
+document.getElementById('note').innerHTML=`Sorted by birth date. Marker <b>shape</b> = form, <b>fill</b> = survival (solid intact · half mutilated · hollow lost), <b>colour</b> = religion. The cross (<span style="color:var(--coral);font-weight:600">✝</span>) marks the seven authors whose composition date is debated by decades or more (Curtius Rufus, Florus, Justin, Herodian, and the fragmentary Dexippus, Eunapius, Olympiodorus; Justin's date ranges across two centuries). For works written over a long span — Plutarch's <i>Lives</i>, Augustine's <i>City of God</i> (413–426) — the dot sits at the terminus ad quem, the latest material that could be included, and carries no uncertainty mark. "Periods covered" mode shows narrative span, not continuous extant text; arrows mark coverage beginning before 200 BCE. The "third-century crisis / transformation" label is deliberately doubled: recent scholarship questions whether the regionally uneven disruptions of 235–284 form a single "crisis," reading them partly as transformation toward the late-antique state and partly as an artefact of our sparse sources. Plague datings and severities are themselves contested; they are shown at approximate midpoints. Dates for late-antique and fragmentary figures are scholarly estimates throughout.`;
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',render);
+buildEvBox(); syncButtons(); render();
+</script>
+</body>
+</html>
